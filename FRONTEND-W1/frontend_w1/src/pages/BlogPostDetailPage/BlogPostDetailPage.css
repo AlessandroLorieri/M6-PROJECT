@@ -1,0 +1,33 @@
+.bd__error {
+    color: crimson;
+}
+
+.bd__back {
+    display: inline-block;
+    margin: 14px 0;
+    text-decoration: none;
+}
+
+.bd__title {
+    margin: 0 0 10px 0;
+    font-size: 42px;
+}
+
+.bd__meta {
+    opacity: 0.75;
+    margin-bottom: 16px;
+}
+
+.bd__cover {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 18px 0;
+}
+
+.bd__content {
+    line-height: 1.6;
+    font-size: 16px;
+}

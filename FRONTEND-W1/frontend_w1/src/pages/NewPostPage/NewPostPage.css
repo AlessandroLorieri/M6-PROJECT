@@ -1,0 +1,65 @@
+.np {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.np__title {
+    margin: 10px 0 18px;
+}
+
+.np__error {
+    color: crimson;
+    margin-bottom: 12px;
+}
+
+.np__form {
+    display: grid;
+    gap: 14px;
+}
+
+.np__label {
+    display: grid;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.np__label input,
+.np__label textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-weight: 400;
+}
+
+.np__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.np__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.np__btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #111;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+.np__btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.np__btn--ghost {
+    background: transparent;
+    color: #111;
+}

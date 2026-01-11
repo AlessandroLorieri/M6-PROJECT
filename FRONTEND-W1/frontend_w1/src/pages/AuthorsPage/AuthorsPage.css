@@ -1,0 +1,61 @@
+.ap__title {
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+.ap__error {
+    color: crimson;
+}
+
+.ap__grid {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.ap__card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: white;
+    padding: 14px;
+}
+
+.ap__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ap__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.ap__name {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ap__meta {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.ap__pager {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.ap__cardLink {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
