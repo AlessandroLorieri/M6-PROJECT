@@ -1,9 +1,9 @@
 const express = require("express")
 const cors = require("cors")
+require("dotenv").config();
 
 const startServer = require("./database/index")
 const authorRoute = require("./author/author.route")
-
 const blogPostsRoute = require("./blogPosts/blogPosts.route")
 
 const PORT = 4545
