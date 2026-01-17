@@ -10,11 +10,13 @@ const PORT = 4545
 
 const app = express()
 app.use(express.json())
-
 app.use(cors())
 
 app.use("/", authorRoute)
-app.use("/",blogPostsRoute)
+app.use("/", blogPostsRoute)
+
+app.use("/authors", authorRoute)
+app.use("/blogPosts",blogPostsRoute)
 
 
 startServer(PORT, app)

@@ -2,6 +2,11 @@ const express = require("express")
 const router = express.Router()
 const blogPostController = require("./blogPosts.controller")
 const blogPostCover = require("../middlewares/uploads/blogPostCover");
+const commentsRouter = require("../comments/comments.route")
+
+router.use("/blogPosts/:id/comments", commentsRouter)
+
+
 
 
 router.get("/blogPosts", blogPostController.findAll)
