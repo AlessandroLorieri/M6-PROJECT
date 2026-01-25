@@ -23,7 +23,13 @@ export default function AuthorDetailPage() {
         setError("");
         setLoading(true);
 
-        fetch(url)
+        const token = localStorage.getItem("accessToken")
+
+        fetch(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();

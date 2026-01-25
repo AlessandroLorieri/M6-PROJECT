@@ -1,11 +1,14 @@
 const express = require("express")
 const router = express.Router()
+
+
 const blogPostController = require("./blogPosts.controller")
 const blogPostCover = require("../middlewares/uploads/blogPostCover");
 const commentsRouter = require("../comments/comments.route")
+const authorizationMiddleware = require("../middlewares/authorization/authorization")
 
+router.use(authorizationMiddleware)
 router.use("/blogPosts/:id/comments", commentsRouter)
-
 
 
 

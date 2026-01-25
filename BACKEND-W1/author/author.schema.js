@@ -14,6 +14,11 @@ const Author = new mongoose.Schema({
         required: true,
         unique: true
     },
+    password:{
+        type:String,
+        required: true,
+        select: false
+    },
     dob:{
         type:Date,
         required: false,

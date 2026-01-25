@@ -59,7 +59,7 @@ const create = async (request, response) => {
                 to: newAuthor.email,
                 subject: "Registrazione completata!",
                 html: `<h1>Ciao ${newAuthor.name} </h1><p>Registrazione completata.</p>`,
-        });
+            });
         } catch (err) {
             console.log("EMAIL ERROR:", err.message);
         }
@@ -70,9 +70,12 @@ const create = async (request, response) => {
             newAuthor
         })
     } catch (error) {
-        response.status(500).send({
-            statusCode: 500,
-            message: "Error during the request"
+        console.error("CREATE AUTHOR ERROR:", error)
+
+        const statusCode = error.statusCode || 500
+        return response.status(statusCode).send({
+            statusCode,
+            message: error.message || "Error during the request",
         })
     }
 }

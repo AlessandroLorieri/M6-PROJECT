@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NewPostPage.css";
 
 export default function NewPostPage() {
     const navigate = useNavigate();
 
-    const DEFAULT_AUTHOR_EMAIL = "mario.rossi@example.com"; 
+    const [me, setMe] = useState(null)
+
 
     const [form, setForm] = useState({
         title: "",
@@ -19,6 +20,30 @@ export default function NewPostPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
+    useEffect(() => {
+        const loadMe = async () => {
+            try {
+                const API = import.meta.env.VITE_API_URL;
+                const token = localStorage.getItem("accessToken");
+
+                const res = await fetch(`${API}/me`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+                const json = await res.json();
+                setMe(json.user);
+            } catch (err) {
+                console.log("ME ERROR:", err.message);
+            }
+        };
+
+        loadMe();
+    }, []);
+
     const onChange = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
@@ -28,6 +53,13 @@ export default function NewPostPage() {
         e.preventDefault();
         setError("");
         setLoading(true);
+
+        if (!me) {
+            setLoading(false);
+            setError("Utente non caricato, riprova tra un secondo");
+            return;
+        }
+
 
         try {
             const API = import.meta.env.VITE_API_URL;
@@ -40,13 +72,18 @@ export default function NewPostPage() {
                     value: Number(form.readTimeValue),
                     unit: form.readTimeUnit.trim(),
                 },
-                author: DEFAULT_AUTHOR_EMAIL, 
-                content: form.content, 
+                author: me.email,
+                content: form.content,
             };
+
+            const token = localStorage.getItem("accessToken")
 
             const res = await fetch(`${API}/blogPosts`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
                 body: JSON.stringify(payload),
             });
 

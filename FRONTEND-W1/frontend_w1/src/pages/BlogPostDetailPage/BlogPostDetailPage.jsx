@@ -16,7 +16,13 @@ export default function BlogPostDetailPage() {
         setError("");
         setLoading(true);
 
-        fetch(url)
+        const token = localStorage.getItem("accessToken")
+
+        fetch(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
@@ -47,7 +53,6 @@ export default function BlogPostDetailPage() {
 
             {post.cover && <img className="bd__cover" src={post.cover} alt={post.title} />}
 
-            {/* content è HTML: per esercizio va bene. */}
             {post.content && (
                 <div
                     className="bd__content"

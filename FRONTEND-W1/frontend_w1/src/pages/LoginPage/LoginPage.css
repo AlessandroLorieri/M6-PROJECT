@@ -1,0 +1,85 @@
+.lp_container {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.lp_card {
+    width: 360px;
+    max-width: 100%;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: grid;
+    gap: 16px;
+}
+
+.lp_title {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.2px;
+}
+
+.lp_subtitle {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.lp_error {
+    color: #b00020;
+    margin: 0;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(176, 0, 32, 0.25);
+    background: rgba(176, 0, 32, 0.06);
+}
+
+.lp_form {
+    display: grid;
+    gap: 12px;
+}
+
+.lp_input {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    color: inherit;
+    outline: none;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.lp_input:focus {
+    border-color: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.lp_button {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.lp_button:hover {
+    opacity: 0.92;
+}
+
+.lp_button:active {
+    transform: scale(0.99);
+}
+
+.lp_button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
