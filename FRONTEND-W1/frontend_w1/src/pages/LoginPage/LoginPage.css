@@ -83,3 +83,42 @@
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+.lp_disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.lp_google {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: inherit;
+}
+
+.lp_googleIcon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 1);
+}
+
+.lp_google {
+    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.lp_google:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.10);
+}
+
+.lp_google:active {
+    transform: scale(0.99);
+}

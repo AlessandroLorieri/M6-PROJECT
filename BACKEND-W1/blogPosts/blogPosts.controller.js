@@ -1,4 +1,5 @@
 const blogPostService = require("./blogPosts.services")
+const AuthorSchema = require("../author/author.schema")
 
 const findAll = async (request, response) => {
     try {
@@ -59,13 +60,15 @@ const create = async (request, response) => {
 
         const newPost = await blogPostService.createBlogPost(body)
 
+        await AuthorSchema.findByIdAndUpdate(request.user.id, { isAuthor: true })
+
         response.status(201).send({
             statusCode: 201,
             message: "Blog post created succesfully",
             newPost,
         })
     } catch (error) {
-        response.statusCode(500).send({
+        response.status(500).send({
             statusCode: 500,
             message: "Error during the request",
         })

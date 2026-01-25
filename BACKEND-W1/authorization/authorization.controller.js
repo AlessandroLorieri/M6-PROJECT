@@ -58,8 +58,21 @@ const me = async (req, res) => {
     })
 }
 
+const googleCallback = async (req, res) => {
+    const user = req.user 
 
-module.exports = { 
+    const token = jwt.sign(
+        { id: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
+    )
+
+    return res.redirect(`${process.env.FRONTEND_URL}/oauth/google/callback?token=${token}`)
+}
+
+
+module.exports = {
     login,
-    me
+    me,
+    googleCallback
 }

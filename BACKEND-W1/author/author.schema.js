@@ -16,7 +16,7 @@ const Author = new mongoose.Schema({
     },
     password:{
         type:String,
-        required: true,
+        required: false,
         select: false
     },
     dob:{
@@ -28,6 +28,20 @@ const Author = new mongoose.Schema({
         type: String,
         required: false,
         default:"https://picsum.photos/200"
+    },
+    googleId:{
+        type: String,
+        required: false
+    },
+    provider:{
+        type: String,
+        required: false,
+        default: "local"
+    },
+    isAuthor: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 },{timestamps: true, strict: true})
 

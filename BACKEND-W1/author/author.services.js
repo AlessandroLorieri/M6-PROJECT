@@ -8,8 +8,11 @@ const getAuthors = async (query = {}) => {
     const limit = Number(query.limit) || 10
     const skip = (page - 1) * limit
 
-    const total = await AuthorSchema.countDocuments()
-    const users = await AuthorSchema.find().skip(skip).limit(limit)
+    const includeAll = query.includeAll === "true"
+    const filter = includeAll ? {} : { isAuthor: true }
+
+    const total = await AuthorSchema.countDocuments(filter)
+    const users = await AuthorSchema.find(filter).skip(skip).limit(limit)
 
     return { data: users, page, limit, total, totalPages: Math.ceil(total / limit) }
 }
