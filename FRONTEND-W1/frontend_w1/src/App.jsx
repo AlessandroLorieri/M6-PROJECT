@@ -12,11 +12,11 @@ import GoogleCallbackPage from "./pages/OAuth/GoogleCallbackPage"
 export default function App() {
   return (
     <Routes>
-/* unica rotta non protetta raggiungibile senza token */
+{/* unica rotta non protetta raggiungibile senza token */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/oauth/google/callback" element={<GoogleCallbackPage />} />
 
-/*rotte protette da RequireAuth raggiungibile solo con token */
+{/*rotte protette da RequireAuth raggiungibile solo con token */}
       <Route element={<RequireAuth />}>
         <Route element={<MainLayout />}>
           <Route path="/" element={<BlogPostPage />} />
